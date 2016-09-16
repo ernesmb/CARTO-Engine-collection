@@ -26,8 +26,16 @@ There are some actions already configured in the collection. These actions will 
 ```javascript
 var jsonData = JSON.parse(responseBody);
 
-postman.setEnvironmentVariable("IMPORT_ID", jsonData.item_queue_id);
+postman.setEnvironmentVariable("LAYERGROUPID", jsonData.layergroupid);
 ```
 
-It will take `item_queue_id` from the Import API call's response and set `IMPORT_ID` environment variable accordingly. 
+It will take `layergroupid` from the Import API call's response and set `LAYERGROUPID` environment variable accordingly.
+
+Similar tests are configured for: 
+
+- Import a file
+- Instantiate an anonymous map
+- Create a SQL Batch API job
+- Create a new Org. user
+
 
