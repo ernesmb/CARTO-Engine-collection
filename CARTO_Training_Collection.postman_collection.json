@@ -179,6 +179,35 @@
 						"description": "Adding the {{import_id}} value, it will return information about that specific proccess"
 					},
 					"response": []
+				},
+				{
+					"name": "Import from ArcGIS Server",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var jsonData = JSON.parse(responseBody);\n\npostman.setEnvironmentVariable(\"IMPORT_ID\", jsonData.item_queue_id);"
+							}
+						}
+					],
+					"request": {
+						"url": "https://{{USER}}.carto.com/api/v1/imports/?api_key={{KEY}}",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"interval\":\"900\",\n\t\"service_item_id\":\"http://url.to.arcgis.server.layer\",\n\t\"service_name\":\"arcgis\",\n\t\"value\":\"http://url.to.arcgis.server.layer\"\n}"
+						},
+						"description": "We need to edit the payload to edit the sync interval and the service URL"
+					},
+					"response": []
 				}
 			]
 		},
@@ -400,7 +429,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"q\":\"SELECT cartodb_id,scalerank,ST_AsText(the_geom) as geom FROM ne_10m_populated_places_simple LIMIT 100\"\n}"
+							"raw": "{\n\t\"q\":\"INSERT INTO dummy_dataset (c) VALUES ('testingAPI')\"\n}"
 						},
 						"description": "The query content will not be publicly sent in the URL, as it is part of the request payload"
 					},
