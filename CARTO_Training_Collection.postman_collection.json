@@ -181,6 +181,17 @@
 					"response": []
 				},
 				{
+					"name": "Check current synchronizations",
+					"request": {
+						"url": "https://{{USER}}.carto.com/api/v1/synchronizations/?api_key={{KEY}}",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
 					"name": "Import from ArcGIS Server",
 					"event": [
 						{
